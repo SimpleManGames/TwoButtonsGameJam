@@ -1,5 +1,7 @@
 namespace Character
 {
+    using Character.Settings;
+
     using UnityEngine;
 
     using VContainer.Unity;
@@ -23,16 +25,14 @@ namespace Character
         private readonly Transform _transform;
         private readonly CapsuleCollider2D _collider;
         private readonly CharacterContext _context;
+        private readonly CharacterSettings _settings;
 
-        // TODO: Move these to be customizable
-        private const float LENGTH = 1f;
-        private const float RADIUS = 0.1f;
-
-        public CheckGrounded(Transform transform, CapsuleCollider2D collider, CharacterContext context)
+        public CheckGrounded(Transform transform, CapsuleCollider2D collider, CharacterContext context, CharacterSettings settings)
         {
             _transform = transform;
             _collider = collider;
             _context = context;
+            _settings = settings;
         }
 
         public void FixedTick()
@@ -47,7 +47,8 @@ namespace Character
         private GatheredGroundInfo RaycastForCheckGroundedInfo()
         {
             Vector2 raycastPosition = new Vector2 (_transform.position.x, _transform.position.y) + _collider.offset;
-            RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, RADIUS, Vector2.down, LENGTH);
+            RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, _settings.GroundCheckRadius, Vector2.down, _settings.GroundDistanceCheckDistance);
+            Debug.DrawRay(raycastPosition, Vector2.down, Color.blue);
             
             return new GatheredGroundInfo(hit.transform != null, Vector2.Angle(hit.normal, Vector2.up), hit.transform);
         }

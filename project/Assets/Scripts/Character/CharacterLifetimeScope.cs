@@ -1,5 +1,7 @@
 namespace Character
 {
+    using Character.Settings;
+
     using VContainer;
     using VContainer.Unity;
 
@@ -15,8 +17,12 @@ namespace Character
         [SerializeField]
         private new CapsuleCollider2D collider2D;
 
+        [SerializeField]
+        private CharacterSettings settings;
+        
         protected override void Configure(IContainerBuilder builder)
         {
+            builder.RegisterInstance(settings).As<CharacterSettings>();
             builder.Register<CharacterContext>(Lifetime.Scoped);
             
             builder.RegisterInstance(transform).As<Transform>();
@@ -25,9 +31,12 @@ namespace Character
 
             builder.UseEntryPoints(config =>
             {
+                config.Add<HandleColliderSize>();
                 config.Add<CheckGrounded>();
                 config.Add<CharacterStateMachineHandler>();
             });
+            
+            builder.Register<FloatRigidbody>(Lifetime.Scoped);
 
             builder.Register<RootState>(Lifetime.Scoped);
             builder.Register<GroundedState>(Lifetime.Scoped);

@@ -124,8 +124,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: 0, y: 0.2}
+  m_Size: {x: 1, y: 1.6}
   m_Direction: 0
 --- !u!50 &7605361111302132380
 Rigidbody2D:
@@ -172,3 +172,4 @@ MonoBehaviour:
   autoInjectGameObjects: []
   rigidbody2D: {fileID: 7605361111302132380}
   collider2D: {fileID: 3160324358750619577}
+  settings: {fileID: 11400000, guid: 66175ee4e4a4ed945b2d78a7af00f0c6, type: 2}

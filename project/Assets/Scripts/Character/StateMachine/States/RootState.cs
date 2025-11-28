@@ -4,26 +4,56 @@ namespace Character
 
     public sealed class RootState : State
     {
+        private readonly CharacterContext _context;
+
         public GroundedState GroundedState { get; private set; }
         
-        public RootState(GroundedState groundedState)
+        public AirborneState AirborneState { get; private set; }
+        
+        public RootState(GroundedState groundedState, AirborneState airborneState, CharacterContext context)
         {
+            _context = context;
+            AirborneState = airborneState;
             GroundedState = groundedState;
         }
 
         protected override State GetInitialState() => GroundedState;
+
+        protected override State GetTransition()
+        {
+            if (!_context.IsGrounded)
+                return AirborneState.FallingState;
+
+            return null;
+        }
     }
 
     public sealed class GroundedState : State
     {
+        private readonly FloatRigidbody _floatRigidbody;
+
         public IdleState IdleState { get; private set; }
         
         public MoveState MoveState { get; private set; }
 
-        public GroundedState(IdleState idleState, MoveState moveState)
+        private bool _enabledFloat = false;
+        
+        public GroundedState(IdleState idleState, MoveState moveState, FloatRigidbody floatRigidbody)
         {
+            _floatRigidbody = floatRigidbody;
             IdleState = idleState;
             MoveState = moveState;
+        }
+
+        protected override void OnEnter()
+        {
+            _enabledFloat = true;
+        }
+
+        protected override void OnFixedUpdate()
+        {
+            if(_enabledFloat)
+                _floatRigidbody.ApplyForceToFloat();
         }
     }
 
@@ -39,14 +69,25 @@ namespace Character
 
     public sealed class AirborneState : State
     {
+        private readonly CharacterContext _context;
+
         public JumpState JumpState { get; private set; }
         
         public FallingState FallingState { get; private set; }
         
-        public AirborneState(JumpState jumpState, FallingState fallingState)
+        public AirborneState(JumpState jumpState, FallingState fallingState, CharacterContext context)
         {
+            _context = context;
             JumpState = jumpState;
             FallingState = fallingState;
+        }
+
+        protected override State GetTransition()
+        {
+            if(_context.IsGrounded)
+                return Ancestor<RootState>().GroundedState;
+
+            return null;
         }
     }
 
