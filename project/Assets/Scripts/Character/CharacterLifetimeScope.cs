@@ -13,7 +13,7 @@ namespace Character
         private new Rigidbody2D rigidbody2D;
 
         [SerializeField]
-        private new CircleCollider2D collider2D;
+        private new CapsuleCollider2D collider2D;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -21,7 +21,7 @@ namespace Character
             
             builder.RegisterInstance(transform).As<Transform>();
             builder.RegisterInstance(rigidbody2D).As<Rigidbody2D>();
-            builder.RegisterInstance(collider2D).As<CircleCollider2D>();
+            builder.RegisterInstance(collider2D).As<CapsuleCollider2D>();
 
             builder.UseEntryPoints(config =>
             {

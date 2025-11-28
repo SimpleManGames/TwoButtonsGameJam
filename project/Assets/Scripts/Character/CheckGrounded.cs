@@ -2,7 +2,6 @@ namespace Character
 {
     using UnityEngine;
 
-    using VContainer;
     using VContainer.Unity;
 
     public struct GatheredGroundInfo
@@ -22,12 +21,14 @@ namespace Character
     public class CheckGrounded : IFixedTickable
     {
         private readonly Transform _transform;
-        private readonly CircleCollider2D _collider;
+        private readonly CapsuleCollider2D _collider;
         private readonly CharacterContext _context;
 
-        private float length = 1f;
-        
-        public CheckGrounded(Transform transform, CircleCollider2D collider, CharacterContext context)
+        // TODO: Move these to be customizable
+        private const float LENGTH = 1f;
+        private const float RADIUS = 0.1f;
+
+        public CheckGrounded(Transform transform, CapsuleCollider2D collider, CharacterContext context)
         {
             _transform = transform;
             _collider = collider;
@@ -46,7 +47,7 @@ namespace Character
         private GatheredGroundInfo RaycastForCheckGroundedInfo()
         {
             Vector2 raycastPosition = new Vector2 (_transform.position.x, _transform.position.y) + _collider.offset;
-            RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, _collider.radius, Vector2.down, length);
+            RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, RADIUS, Vector2.down, LENGTH);
             
             return new GatheredGroundInfo(hit.transform != null, Vector2.Angle(hit.normal, Vector2.up), hit.transform);
         }
