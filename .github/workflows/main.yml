@@ -6,6 +6,8 @@ jobs:
   build:
     name: Test/Build/Deploy
     runs-on: ubuntu-latest
+    permissions: # TODO: Remove this when Deploying is using the other action
+      contents: write
     steps:
       # Checkout
       - name: Checkout Repository
@@ -52,6 +54,8 @@ jobs:
           name: Build
           path: ${{ vars.BUILD_PATH }}
 
+      # TODO: Probably better to use https://github.com/actions/deploy-pages?tab=readme-ov-file
+
       # Deployment
       - name: Stash build result and reset local changes
         run: |
@@ -64,9 +68,7 @@ jobs:
           git stash push ${{ vars.BUILD_PATH }}/${{ vars.TARGET_PLATFORM }}
           git stash list
           git reset --hard
-          sudo git clean -d -x -f
-    
-      # Deployment
+          sudo git clean -d -x -f    
       - name: Cleaning gh-pages branch
         run: |
           echo "Switch to ${{ vars.DEPLOYMENT_BRANCH }}"
