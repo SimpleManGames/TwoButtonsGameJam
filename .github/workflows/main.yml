@@ -32,6 +32,15 @@ jobs:
       #     githubToken: ${{ secrets.GITHUB_TOKEN }}
       #     projectPath: project/
 
+      # Free Space
+      - name: Free Disk Space for Android
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
+
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v4
