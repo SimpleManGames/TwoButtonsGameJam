@@ -47,6 +47,7 @@ jobs:
         with:
           targetPlatform: WebGL
           projectPath: project/
+          buildProfile: 'Assets/Settings/Build Profiles/WebGL.asset'
 
       # Output
       - uses: actions/upload-artifact@v4
