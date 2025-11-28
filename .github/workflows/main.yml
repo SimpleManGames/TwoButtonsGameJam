@@ -17,7 +17,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: project/Library
-          key: Library-${{ hashFiles('project/Assets/**', 'project/Packages/**', 'project/ProjectSettings/**') }}
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
 
