@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
         with:
-          lfs: true
+          lfs: false
 
       # Cache
       - uses: actions/cache@v4
@@ -33,13 +33,7 @@ jobs:
       #     projectPath: project/
 
       # Free Space
-      - name: Free Disk Space for Android
-        run: |
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo apt clean
-          docker rmi $(docker image ls -aq)
-          df -h
+      - uses: jlumbroso/free-disk-space@main
 
       # Build
       - name: Build project
