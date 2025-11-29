@@ -24,8 +24,8 @@ MonoBehaviour:
   <AdditionalOffset>k__BackingField: {x: 0, y: 0}
   <UprightSpringStrength>k__BackingField: 0
   <UprightSpringDamping>k__BackingField: 0
-  <JumpHeight>k__BackingField: 5
-  <BufferTime>k__BackingField: -1.69
+  <JumpHeight>k__BackingField: 3
+  <BufferTime>k__BackingField: 0.2
   <CoyoteTime>k__BackingField: 0.1
   <MaxJumpAngle>k__BackingField: 45
   <WalkSettings>k__BackingField:

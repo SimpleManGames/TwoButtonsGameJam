@@ -24,7 +24,12 @@ namespace Character
         }
 
         protected override State GetInitialState() => GroundedState;
-
+        
+        protected override void OnUpdate(float deltaTime)
+        {
+            _context.JumpInputElapsed += deltaTime;
+        }
+        
         protected override State GetTransition()
         {
             if (!_context.IsGrounded)
@@ -79,11 +84,6 @@ namespace Character
         protected override void OnEnter()
         {
             _enabledFloat = true;
-        }
-
-        protected override void OnUpdate(float deltaTime)
-        {
-            _context.JumpInputElapsed += deltaTime;
         }
 
         protected override void OnFixedUpdate()
