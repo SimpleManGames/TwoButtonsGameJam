@@ -9,5 +9,7 @@ namespace Character
         public float Angle { get; set; }
 
         public Transform GroundTransform { get; set; }
+        
+        public Vector2 LookDirection { get; set; } = Vector2.right;
     }
 }

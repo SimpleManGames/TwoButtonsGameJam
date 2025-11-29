@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <FloatColliderRaycastLength>k__BackingField: 1.5
   <RideHeight>k__BackingField: 1
-  <SpringForce>k__BackingField: 400
-  <SpringDamper>k__BackingField: 20
+  <SpringForce>k__BackingField: 2000
+  <SpringDamper>k__BackingField: 70
   <GroundDistanceCheckDistance>k__BackingField: 1.5
   <GroundCheckRadius>k__BackingField: 0.1
   <ColliderHeight>k__BackingField: 2
   <StepHeightRatio>k__BackingField: 0.2
   <Thickness>k__BackingField: 1
   <AdditionalOffset>k__BackingField: {x: 0, y: 0}
+  <UprightSpringStrength>k__BackingField: 0
+  <UprightSpringDamping>k__BackingField: 0

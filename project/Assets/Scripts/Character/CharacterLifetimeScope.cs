@@ -33,6 +33,7 @@ namespace Character
             {
                 config.Add<HandleColliderSize>();
                 config.Add<CheckGrounded>();
+                // config.Add<MaintainUpright>(); // This behaves weirdly in 2D
                 config.Add<CharacterStateMachineHandler>();
             });
             

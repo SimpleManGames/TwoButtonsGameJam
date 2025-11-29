@@ -37,5 +37,13 @@ namespace Character.Settings
 
         [field: SerializeField]
         public Vector2 AdditionalOffset { get; private set; } = Vector2.zero;
+        
+        
+        [field: Header("Collider Settings")]
+        [field: SerializeField]
+        public float UprightSpringStrength { get; private set; }
+        
+        [field: SerializeField]
+        public float UprightSpringDamping { get; private set; }
     }
 }

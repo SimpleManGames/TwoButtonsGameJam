@@ -48,7 +48,7 @@ namespace Character
         {
             Vector2 raycastPosition = new Vector2 (_transform.position.x, _transform.position.y) + _collider.offset;
             RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, _settings.GroundCheckRadius, Vector2.down, _settings.GroundDistanceCheckDistance);
-            Debug.DrawRay(raycastPosition, Vector2.down, Color.blue);
+            Debug.DrawRay(raycastPosition, Vector2.down * _settings.GroundDistanceCheckDistance, Color.blue);
             
             return new GatheredGroundInfo(hit.transform != null, Vector2.Angle(hit.normal, Vector2.up), hit.transform);
         }

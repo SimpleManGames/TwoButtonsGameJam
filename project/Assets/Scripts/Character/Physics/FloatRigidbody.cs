@@ -20,7 +20,6 @@ namespace Character
         public void ApplyForceToFloat()
         {
             RaycastHit2D hitInfo = Physics2D.Raycast(_transform.position, Vector2.down, _settings.FloatColliderRaycastLength);
-            Debug.DrawRay(_transform.position, Vector2.down * _settings.FloatColliderRaycastLength, Color.red);
             
             if (hitInfo.collider == null)
                 return;
