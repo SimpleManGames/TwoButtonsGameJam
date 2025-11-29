@@ -26,17 +26,22 @@ namespace Character
         private readonly CapsuleCollider2D _collider;
         private readonly CharacterContext _context;
         private readonly CharacterSettings _settings;
+        private readonly Rigidbody2D _rigidbody;
 
-        public CheckGrounded(Transform transform, CapsuleCollider2D collider, CharacterContext context, CharacterSettings settings)
+        public CheckGrounded(Transform transform, CapsuleCollider2D collider, CharacterContext context, CharacterSettings settings, Rigidbody2D rigidbody)
         {
             _transform = transform;
             _collider = collider;
             _context = context;
             _settings = settings;
+            _rigidbody = rigidbody;
         }
 
         public void FixedTick()
         {
+            if (_rigidbody.linearVelocityY > 0)
+                return;
+            
             GatheredGroundInfo info = RaycastForCheckGroundedInfo();
             
             _context.IsGrounded = info.isGrounded;

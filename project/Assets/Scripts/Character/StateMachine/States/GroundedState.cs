@@ -12,6 +12,7 @@ namespace Character
         private readonly CharacterContext _context;
         private readonly ApplyMovementForce _movement;
         private readonly CharacterSettings _settings;
+        private readonly Rigidbody2D _rigidbody;
 
         public IdleState IdleState { get; private set; }
         
@@ -19,12 +20,13 @@ namespace Character
 
         private bool _enabledFloat = false;
         
-        public GroundedState(IdleState idleState, MoveState moveState, FloatRigidbody floatRigidbody, CharacterContext context, ApplyMovementForce movement, CharacterSettings settings)
+        public GroundedState(IdleState idleState, MoveState moveState, FloatRigidbody floatRigidbody, CharacterContext context, ApplyMovementForce movement, CharacterSettings settings, Rigidbody2D rigidbody)
         {
             _floatRigidbody = floatRigidbody;
             _context = context;
             _movement = movement;
             _settings = settings;
+            _rigidbody = rigidbody;
             IdleState = idleState;
             MoveState = moveState;
         }
@@ -35,8 +37,7 @@ namespace Character
         {
             bool attemptingJump = _context.JumpInputElapsed <= _settings.BufferTime;
 
-            bool canJump = (_context.IsGrounded || _context.ElapsedAirtime <= _settings.CoyoteTime) &&
-                _context.GroundedAngle <= _settings.MaxJumpAngle;
+            bool canJump = (_context.IsGrounded || _context.ElapsedAirtime <= _settings.CoyoteTime) && _context.GroundedAngle <= _settings.MaxJumpAngle;
 
             if (attemptingJump && canJump)
             {
