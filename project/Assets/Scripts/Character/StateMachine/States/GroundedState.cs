@@ -35,13 +35,11 @@ namespace Character
         {
             bool attemptingJump = _context.JumpInputElapsed <= _settings.BufferTime;
 
-            bool canJump = _context.IsGrounded || (_context.ElapsedAirtime <= _settings.CoyoteTime) &&
+            bool canJump = (_context.IsGrounded || _context.ElapsedAirtime <= _settings.CoyoteTime) &&
                 _context.GroundedAngle <= _settings.MaxJumpAngle;
 
             if (attemptingJump && canJump)
             {
-                Debug.Log($"here {_context.IsGrounded} {_context.ElapsedAirtime <= _settings.CoyoteTime}");
-                
                 _enabledFloat = false;
                 return Ancestor<RootState>().AirborneState.JumpState;
             }

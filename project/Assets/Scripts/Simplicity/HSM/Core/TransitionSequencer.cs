@@ -29,13 +29,15 @@ namespace HSM
         // Request a transition from one state to another
         public void RequestTransition(State from, State to)
         {
-            if (to == null || from == to) return;
+            if (to == null || from == to) 
+                return;
 
             if (_sequencer != null)
             {
                 _pending = (from, to);
                 return;
             }
+            
             BeginTransition(from, to);
         }
 

@@ -136,6 +136,7 @@ MonoBehaviour:
   collider2D: {fileID: 3160324358750619577}
   animator: {fileID: 9145862625475293924}
   settings: {fileID: 11400000, guid: 66175ee4e4a4ed945b2d78a7af00f0c6, type: 2}
+  spriteRenderer: {fileID: 6675369810855440328}
 --- !u!1001 &7995798395687321388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +201,11 @@ PrefabInstance:
 --- !u!4 &262138523139489825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
+  m_PrefabInstance: {fileID: 7995798395687321388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6675369810855440328 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
   m_PrefabInstance: {fileID: 7995798395687321388}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &9145862625475293924 stripped

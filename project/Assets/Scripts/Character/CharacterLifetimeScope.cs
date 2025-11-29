@@ -23,6 +23,9 @@ namespace Character
         [SerializeField]
         private CharacterSettings settings;
         
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(settings).As<CharacterSettings>();
@@ -32,6 +35,7 @@ namespace Character
             builder.RegisterInstance(rigidbody2D).As<Rigidbody2D>();
             builder.RegisterInstance(collider2D).As<CapsuleCollider2D>();
             builder.RegisterInstance(animator).As<Animator>();
+            builder.RegisterInstance(spriteRenderer).As<SpriteRenderer>();
                 
             builder.UseEntryPoints(config =>
             {

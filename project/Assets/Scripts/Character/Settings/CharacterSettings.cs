@@ -92,5 +92,8 @@ namespace Character.Settings
 
         [field: SerializeField]
         public AnimationCurve FallAirtimeSpeedMultiplierCurve { get; set; }
+
+        [field: SerializeField]
+        public float AcquireGroundLockoutTime { get; set; }
     }
 }
