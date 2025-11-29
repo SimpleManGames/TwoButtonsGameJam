@@ -92,7 +92,5 @@ namespace Character.Settings
 
         [field: SerializeField]
         public AnimationCurve FallAirtimeSpeedMultiplierCurve { get; set; }
-
-
     }
 }

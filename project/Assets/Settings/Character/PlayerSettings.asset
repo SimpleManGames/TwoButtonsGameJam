@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b295dcf2964844996f85332321c588, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  <FloatColliderRaycastLength>k__BackingField: 1.5
+  <FloatColliderRaycastLength>k__BackingField: 3.58
   <RideHeight>k__BackingField: 1
   <SpringForce>k__BackingField: 2000
-  <SpringDamper>k__BackingField: 70
-  <GroundDistanceCheckDistance>k__BackingField: 1.5
+  <SpringDamper>k__BackingField: 150
+  <GroundDistanceCheckDistance>k__BackingField: 1.2
   <GroundCheckRadius>k__BackingField: 0.1
   <ColliderHeight>k__BackingField: 2
   <StepHeightRatio>k__BackingField: 0.2
@@ -24,8 +24,8 @@ MonoBehaviour:
   <AdditionalOffset>k__BackingField: {x: 0, y: 0}
   <UprightSpringStrength>k__BackingField: 0
   <UprightSpringDamping>k__BackingField: 0
-  <JumpHeight>k__BackingField: 3
-  <BufferTime>k__BackingField: 0.2
+  <JumpHeight>k__BackingField: 2
+  <BufferTime>k__BackingField: 0.05
   <CoyoteTime>k__BackingField: 0.1
   <MaxJumpAngle>k__BackingField: 45
   <WalkSettings>k__BackingField:

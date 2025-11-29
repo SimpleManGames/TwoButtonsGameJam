@@ -4,6 +4,7 @@ namespace Game
 
     using UnityEngine;
     using UnityEngine.InputSystem;
+    using UnityEngine.UIElements;
 
     using VContainer.Unity;
 
@@ -12,6 +13,8 @@ namespace Game
         private readonly TwoButtonsInputAction _inputAction;
         private readonly CharacterContext _context;
 
+        private float _moveDirection = 0f;
+        
         public PlayerCharacterInput(TwoButtonsInputAction inputAction, CharacterContext context)
         {
             _inputAction = inputAction;
@@ -26,13 +29,19 @@ namespace Game
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            _context.MoveDirection = new Vector2(context.ReadValue<float>(), 0);
+            if (context.canceled && !context.control.IsPressed())
+                _moveDirection = context.ReadValue<float>();
+            
+            if(context.performed)
+                _moveDirection = context.ReadValue<float>();
+            
+            _context.MoveDirection = new Vector2(_moveDirection, 0);
         }
 
         public void OnJump(InputAction.CallbackContext context)
         {
             _context.JumpPressed = context.ReadValue<float>() > 0;
-            if(_context.JumpPressed)
+            if (_context.JumpPressed)
                 _context.JumpInputElapsed = 0f;
         }
     }

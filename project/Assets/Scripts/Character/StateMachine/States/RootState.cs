@@ -115,7 +115,7 @@ namespace Character
         private readonly ApplyMovementForce _movement;
         private readonly CharacterSettings _settings;
 
-        private const float GROUNDED_LOCKOUT_TIME = 0.1f;   
+        private const float GROUNDED_LOCKOUT_TIME = 0.0f;   
         
         public AirborneState(JumpState jumpState, FallingState fallingState, CharacterContext context, ApplyMovementForce movement, CharacterSettings settings)
         {
