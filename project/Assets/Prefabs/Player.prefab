@@ -134,6 +134,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   rigidbody2D: {fileID: 7605361111302132380}
   collider2D: {fileID: 3160324358750619577}
+  animator: {fileID: 9145862625475293924}
   settings: {fileID: 11400000, guid: 66175ee4e4a4ed945b2d78a7af00f0c6, type: 2}
 --- !u!1001 &7995798395687321388
 PrefabInstance:
@@ -147,13 +148,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: FemaleSimpleCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 38abc5b69a50a3f44b4910902563ccc2, type: 2}
     - target: {fileID: 7878350319992209165, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -195,5 +200,10 @@ PrefabInstance:
 --- !u!4 &262138523139489825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
+  m_PrefabInstance: {fileID: 7995798395687321388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &9145862625475293924 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1160356261127867848, guid: d566fb1da61a3b44e90cbdd0e6138b95, type: 3}
   m_PrefabInstance: {fileID: 7995798395687321388}
   m_PrefabAsset: {fileID: 0}

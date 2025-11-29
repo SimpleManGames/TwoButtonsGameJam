@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b295dcf2964844996f85332321c588, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  <FloatColliderRaycastLength>k__BackingField: 3.58
+  <FloatColliderRaycastLength>k__BackingField: 3
   <RideHeight>k__BackingField: 1
   <SpringForce>k__BackingField: 2000
-  <SpringDamper>k__BackingField: 150
+  <SpringDamper>k__BackingField: 300
   <GroundDistanceCheckDistance>k__BackingField: 1.2
   <GroundCheckRadius>k__BackingField: 0.1
   <ColliderHeight>k__BackingField: 2

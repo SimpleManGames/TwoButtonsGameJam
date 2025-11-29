@@ -30,6 +30,7 @@ namespace HSM
                 return;
             }
 
+            _tasks = new List<Task>(_steps.Count);
             foreach (PhaseStep t in _steps)
                 _tasks.Add(t(_ct));
         }

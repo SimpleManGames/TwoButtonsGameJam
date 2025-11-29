@@ -18,6 +18,9 @@ namespace Character
         private new CapsuleCollider2D collider2D;
 
         [SerializeField]
+        private Animator animator;
+        
+        [SerializeField]
         private CharacterSettings settings;
         
         protected override void Configure(IContainerBuilder builder)
@@ -28,7 +31,8 @@ namespace Character
             builder.RegisterInstance(transform).As<Transform>();
             builder.RegisterInstance(rigidbody2D).As<Rigidbody2D>();
             builder.RegisterInstance(collider2D).As<CapsuleCollider2D>();
-            
+            builder.RegisterInstance(animator).As<Animator>();
+                
             builder.UseEntryPoints(config =>
             {
                 config.Add<HandleColliderSize>();
@@ -41,14 +45,14 @@ namespace Character
             builder.Register<ApplyMovementForce>(Lifetime.Scoped);
             builder.Register<ApplyJumpForce>(Lifetime.Scoped);
 
-            builder.Register<RootState>(Lifetime.Scoped);
-            builder.Register<GroundedState>(Lifetime.Scoped);
-            builder.Register<IdleState>(Lifetime.Scoped);
-            builder.Register<MoveState>(Lifetime.Scoped);
+            builder.Register<RootState>(Lifetime.Singleton);
+            builder.Register<GroundedState>(Lifetime.Singleton);
+            builder.Register<IdleState>(Lifetime.Singleton);
+            builder.Register<MoveState>(Lifetime.Singleton);
 
-            builder.Register<AirborneState>(Lifetime.Scoped);
-            builder.Register<JumpState>(Lifetime.Scoped);
-            builder.Register<FallingState>(Lifetime.Scoped);
+            builder.Register<AirborneState>(Lifetime.Singleton);
+            builder.Register<JumpState>(Lifetime.Singleton);
+            builder.Register<FallingState>(Lifetime.Singleton);
 
             builder.Register(resolver =>
             {

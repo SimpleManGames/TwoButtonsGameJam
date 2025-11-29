@@ -61,23 +61,27 @@ namespace Character
             IdleState = idleState;
             MoveState = moveState;
         }
+        
+        protected override State GetInitialState() => IdleState;
 
         protected override State GetTransition()
         {
             bool attemptingJump = _context.JumpInputElapsed <= _settings.BufferTime;
 
-            bool canJump = (_context.IsGrounded || _context.ElapsedAirtime <= _settings.CoyoteTime) &&
-                           _context.GroundedAngle <= _settings.MaxJumpAngle;
+            bool canJump = _context.IsGrounded || (_context.ElapsedAirtime <= _settings.CoyoteTime) &&
+                _context.GroundedAngle <= _settings.MaxJumpAngle;
 
             if (attemptingJump && canJump)
             {
+                Debug.Log($"here {_context.IsGrounded} {_context.ElapsedAirtime <= _settings.CoyoteTime}");
+                
                 _enabledFloat = false;
                 return Ancestor<RootState>().AirborneState.JumpState;
             }
             
             if (_context.MoveDirection != Vector2.zero)
                 return MoveState;
-
+            
             return null;
         }
 
@@ -97,10 +101,48 @@ namespace Character
 
     public sealed class IdleState : State
     {
+        private readonly Animator _animator;
+        private readonly CharacterContext _context;
+
+        public IdleState(Animator animator, CharacterContext context)
+        {
+            _animator = animator;
+            _context = context;
+            // Add(new PlayAnimationActivity(characterAnimator, "Idle"));
+        }
+
+        protected override void OnEnter()
+        {
+            _animator.Play("Idle");
+        }
+
+        protected override State GetTransition()
+        {
+            return _context.MoveDirection != Vector2.zero ? Ancestor<GroundedState>().MoveState : null;
+        }
     }
 
     public sealed class MoveState : State
     {
+        private readonly Animator _animator;
+        private readonly CharacterContext _context;
+
+        public MoveState(Animator animator, CharacterContext context)
+        {
+            _animator = animator;
+            _context = context;
+            // Add(new PlayAnimationActivity(characterAnimator, "Walk"));
+        }
+
+        protected override void OnEnter()
+        {
+            _animator.Play("Walk");
+        }
+
+        protected override State GetTransition()
+        {
+            return _context.MoveDirection == Vector2.zero ? Ancestor<GroundedState>().IdleState : null;
+        }
     }
 
     public sealed class AirborneState : State
@@ -115,7 +157,7 @@ namespace Character
         private readonly ApplyMovementForce _movement;
         private readonly CharacterSettings _settings;
 
-        private const float GROUNDED_LOCKOUT_TIME = 0.0f;   
+        private const float GROUNDED_LOCKOUT_TIME = 0.1f;
         
         public AirborneState(JumpState jumpState, FallingState fallingState, CharacterContext context, ApplyMovementForce movement, CharacterSettings settings)
         {
@@ -133,10 +175,15 @@ namespace Character
 
             bool isLockedOutFromGrounded = _currentReacquireGroundLockoutTime < GROUNDED_LOCKOUT_TIME;
 
-            if(_context.IsGrounded && !isLockedOutFromGrounded)
+            if (_context.IsGrounded && !isLockedOutFromGrounded)
                 return Ancestor<RootState>().GroundedState;
             
             return null;
+        }
+        
+        protected override void OnEnter()
+        {
+            _context.IsGrounded = false;
         }
         
         protected override void OnUpdate(float deltaTime)
@@ -162,12 +209,14 @@ namespace Character
         private readonly CharacterContext _context;
         private readonly Rigidbody2D _rigidbody;
         private readonly ApplyJumpForce _jumpForce;
+        private readonly Animator _animator;
 
-        public JumpState(CharacterContext context, Rigidbody2D rigidbody, ApplyJumpForce jumpForce)
+        public JumpState(CharacterContext context, Rigidbody2D rigidbody, ApplyJumpForce jumpForce, Animator animator)
         {
             _context = context;
             _rigidbody = rigidbody;
             _jumpForce = jumpForce;
+            _animator = animator;
         }
         
         protected override State GetTransition()
@@ -181,6 +230,7 @@ namespace Character
         protected override void OnEnter()
         {
             _jumpForce.Jump();
+            _animator.Play("Jump Squat");
         }
     }
 
@@ -188,17 +238,20 @@ namespace Character
     {
         private readonly CharacterSettings _settings;
         private readonly Rigidbody2D _rigidbody;
+        private readonly Animator _animator;
         private float _currentFallTime;
 
-        public FallingState(CharacterSettings settings, Rigidbody2D rigidbody)
+        public FallingState(CharacterSettings settings, Rigidbody2D rigidbody, Animator animator)
         {
             _settings = settings;
             _rigidbody = rigidbody;
+            _animator = animator;
         }
         
         protected override void OnEnter()
         {
             _currentFallTime = 0f;
+            _animator.Play("Jump Land Prediction");
         }
 
         protected override void OnUpdate(float deltaTime)
