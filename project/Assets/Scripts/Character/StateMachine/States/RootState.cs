@@ -2,6 +2,8 @@ namespace Character
 {
     using HSM;
 
+    using UnityEngine;
+
     public sealed class RootState : State
     {
         private readonly CharacterContext _context;
@@ -31,6 +33,8 @@ namespace Character
     public sealed class GroundedState : State
     {
         private readonly FloatRigidbody _floatRigidbody;
+        private readonly CharacterContext _context;
+        private readonly ApplyMovementForce _movement;
 
         public IdleState IdleState { get; private set; }
         
@@ -38,11 +42,21 @@ namespace Character
 
         private bool _enabledFloat = false;
         
-        public GroundedState(IdleState idleState, MoveState moveState, FloatRigidbody floatRigidbody)
+        public GroundedState(IdleState idleState, MoveState moveState, FloatRigidbody floatRigidbody, CharacterContext context, ApplyMovementForce movement)
         {
             _floatRigidbody = floatRigidbody;
+            _context = context;
+            _movement = movement;
             IdleState = idleState;
             MoveState = moveState;
+        }
+
+        protected override State GetTransition()
+        {
+            if (_context.MoveDirection != Vector2.zero)
+                return MoveState;
+
+            return IdleState;
         }
 
         protected override void OnEnter()
@@ -54,17 +68,17 @@ namespace Character
         {
             if(_enabledFloat)
                 _floatRigidbody.ApplyForceToFloat();
+            
+            _movement.Move(_context.MoveDirection);
         }
     }
 
     public sealed class IdleState : State
     {
-        
     }
 
     public sealed class MoveState : State
     {
-        
     }
 
     public sealed class AirborneState : State

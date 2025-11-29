@@ -1,11 +1,11 @@
 {
-    "name": "Game",
-    "rootNamespace": "Game",
+    "name": "Player",
+    "rootNamespace": "Player",
     "references": [
-        "VContainer",
-        "Character",
-        "HSM",
-        "Input"
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:4519c1a2937f3ba479479b97000175ae",
+        "GUID:2baca2ecacfb5e247b7e0d3a9f6dc1cf",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

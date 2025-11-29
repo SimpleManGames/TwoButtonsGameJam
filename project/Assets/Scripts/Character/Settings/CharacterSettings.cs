@@ -38,12 +38,27 @@ namespace Character.Settings
         [field: SerializeField]
         public Vector2 AdditionalOffset { get; private set; } = Vector2.zero;
         
-        
         [field: Header("Collider Settings")]
         [field: SerializeField]
         public float UprightSpringStrength { get; private set; }
         
         [field: SerializeField]
         public float UprightSpringDamping { get; private set; }
+
+        [field: Header("Move Settings")]
+        [field: SerializeField]
+        public float MaxSpeed { get; private set; } = 10f;
+        
+        [field: SerializeField]
+        public float Acceleration { get; private set; }
+        
+        [field: SerializeField]
+        public AnimationCurve AccelerationFactorFromDot { get; private set; }
+        
+        [field: SerializeField]
+        public float MaxAccelerationForce { get; private set; }
+        
+        [field: SerializeField]
+        public AnimationCurve MaxAccelerationForceFactorFromDot { get; private set; }
     }
 }

@@ -23,12 +23,12 @@ namespace Character
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(settings).As<CharacterSettings>();
-            builder.Register<CharacterContext>(Lifetime.Scoped);
+            builder.Register<CharacterContext>(Lifetime.Singleton);
             
             builder.RegisterInstance(transform).As<Transform>();
             builder.RegisterInstance(rigidbody2D).As<Rigidbody2D>();
             builder.RegisterInstance(collider2D).As<CapsuleCollider2D>();
-
+            
             builder.UseEntryPoints(config =>
             {
                 config.Add<HandleColliderSize>();
@@ -38,6 +38,7 @@ namespace Character
             });
             
             builder.Register<FloatRigidbody>(Lifetime.Scoped);
+            builder.Register<ApplyMovementForce>(Lifetime.Scoped);
 
             builder.Register<RootState>(Lifetime.Scoped);
             builder.Register<GroundedState>(Lifetime.Scoped);

@@ -11,5 +11,7 @@ namespace Character
         public Transform GroundTransform { get; set; }
         
         public Vector2 LookDirection { get; set; } = Vector2.right;
+        
+        public Vector2 MoveDirection { get; set; } = Vector2.zero;
     }
 }
