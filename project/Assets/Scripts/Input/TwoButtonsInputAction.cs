@@ -118,7 +118,7 @@ namespace Game
                     ""name"": ""Keyboard"",
                     ""id"": ""d5e87cf5-d8ca-47fe-b7be-abd3735cd83e"",
                     ""path"": ""1DAxis"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.05)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
