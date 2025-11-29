@@ -40,7 +40,7 @@ namespace Character
             GatheredGroundInfo info = RaycastForCheckGroundedInfo();
             
             _context.IsGrounded = info.isGrounded;
-            _context.Angle = info.groundedAngle;
+            _context.GroundedAngle = info.groundedAngle;
             _context.GroundTransform = info.groundTransform;
         }
 

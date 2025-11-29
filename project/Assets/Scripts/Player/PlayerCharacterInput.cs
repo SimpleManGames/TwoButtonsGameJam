@@ -31,7 +31,9 @@ namespace Game
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
+            _context.JumpPressed = context.ReadValue<float>() > 0;
+            if(_context.JumpPressed)
+                _context.JumpInputElapsed = 0f;
         }
     }
 }

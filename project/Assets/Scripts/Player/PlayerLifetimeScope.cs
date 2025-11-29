@@ -15,7 +15,6 @@ namespace Game
             {
                 config.Add<PlayerCharacterInput>();
             });
-            
         }
     }
 }

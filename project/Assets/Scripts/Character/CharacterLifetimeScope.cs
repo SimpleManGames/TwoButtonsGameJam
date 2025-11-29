@@ -39,6 +39,7 @@ namespace Character
             
             builder.Register<FloatRigidbody>(Lifetime.Scoped);
             builder.Register<ApplyMovementForce>(Lifetime.Scoped);
+            builder.Register<ApplyJumpForce>(Lifetime.Scoped);
 
             builder.Register<RootState>(Lifetime.Scoped);
             builder.Register<GroundedState>(Lifetime.Scoped);

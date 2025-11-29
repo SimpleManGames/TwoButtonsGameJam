@@ -24,71 +24,180 @@ MonoBehaviour:
   <AdditionalOffset>k__BackingField: {x: 0, y: 0}
   <UprightSpringStrength>k__BackingField: 0
   <UprightSpringDamping>k__BackingField: 0
-  <MaxSpeed>k__BackingField: 6
-  <Acceleration>k__BackingField: 20
-  <AccelerationFactorFromDot>k__BackingField:
+  <JumpHeight>k__BackingField: 5
+  <BufferTime>k__BackingField: -1.69
+  <CoyoteTime>k__BackingField: 0.1
+  <MaxJumpAngle>k__BackingField: 45
+  <WalkSettings>k__BackingField:
+    <MaxSpeed>k__BackingField: 10
+    <Acceleration>k__BackingField: 20
+    <AccelerationFactorFromDot>k__BackingField:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2
+        inSlope: -0.009191603
+        outSlope: -0.009191603
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.2772851
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: -0.018959584
+        outSlope: 0
+        tangentMode: 65
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.20193088
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    <MaxAccelerationForce>k__BackingField: 15
+    <MaxAccelerationForceFactorFromDot>k__BackingField:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2
+        inSlope: -0.009191603
+        outSlope: -0.009191603
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.2772851
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: -0.018959584
+        outSlope: 0
+        tangentMode: 65
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.20193088
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  <AirborneSettings>k__BackingField:
+    <MaxSpeed>k__BackingField: 10
+    <Acceleration>k__BackingField: 20
+    <AccelerationFactorFromDot>k__BackingField:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2
+        inSlope: -0.009191603
+        outSlope: -0.009191603
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.2772851
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: -0.018959584
+        outSlope: 0
+        tangentMode: 65
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.20193088
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    <MaxAccelerationForce>k__BackingField: 15
+    <MaxAccelerationForceFactorFromDot>k__BackingField:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2
+        inSlope: -0.009191603
+        outSlope: -0.009191603
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.2772851
+      - serializedVersion: 3
+        time: 0.5
+        value: 1
+        inSlope: -0.018959584
+        outSlope: 0
+        tangentMode: 65
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.20193088
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  <BaseFallSpeed>k__BackingField: 1000
+  <FallAirtimeSpeedMultiplierCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 2
-      inSlope: -0.009191603
-      outSlope: -0.009191603
+      value: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.2772851
-    - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: -0.018959584
-      outSlope: 0
-      tangentMode: 65
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.20193088
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
       outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <MaxAccelerationForce>k__BackingField: 15
-  <MaxAccelerationForceFactorFromDot>k__BackingField:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 2
-      inSlope: -0.009191603
-      outSlope: -0.009191603
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.2772851
     - serializedVersion: 3
       time: 0.5
-      value: 1
-      inSlope: -0.018959584
-      outSlope: 0
-      tangentMode: 65
-      weightedMode: 0
+      value: 0.9
+      inSlope: 0.5792721
+      outSlope: 0.5792721
+      tangentMode: 0
+      weightedMode: 3
       inWeight: 0.33333334
-      outWeight: 0.20193088
+      outWeight: 0.36170208
     - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
