@@ -13,12 +13,12 @@ namespace Character
         {
             _animator = animator;
             _context = context;
-            // Add(new PlayAnimationActivity(characterAnimator, "Idle"));
+            Add(new PlayAnimationActivity(animator, "Idle", true));
         }
 
         protected override void OnEnter()
         {
-            _animator.Play("Idle");
+            // _animator.Play("Idle");
         }
 
         protected override State GetTransition()

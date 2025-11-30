@@ -20,6 +20,9 @@ namespace Character
             _rigidbody = rigidbody;
             _animator = animator;
             _context = context;
+            
+            Add(new PlayAnimationActivity(animator, "Jump Land Prediction", true));
+            Add(new PlayAnimationActivity(animator, "Jump Land", false));
         }
 
         protected override State GetTransition()
@@ -33,7 +36,6 @@ namespace Character
         protected override void OnEnter()
         {
             _currentFallTime = 0f;
-            _animator.Play("Jump Land Prediction");
         }
 
         protected override void OnUpdate(float deltaTime)

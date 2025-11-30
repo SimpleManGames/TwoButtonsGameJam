@@ -19,5 +19,7 @@ namespace Character
         public bool JumpPressed { get; set; }
 
         public float JumpInputElapsed { get; set; }
+
+        public Vector2 GroundWorldPoint { get; set; }
     }
 }

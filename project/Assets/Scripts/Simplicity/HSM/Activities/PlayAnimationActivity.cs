@@ -11,11 +11,13 @@ namespace HSM
     {
         private readonly Animator _animator;
         private readonly string _stateName;
+        private readonly bool _onEnter;
 
-        public PlayAnimationActivity(Animator animator, string stateName)
+        public PlayAnimationActivity(Animator animator, string stateName, bool onEnter)
         {
             _animator = animator;
             _stateName = stateName;
+            _onEnter = onEnter;
         }
 
         public async override Task ActivateAsync(CancellationToken ct)
@@ -24,12 +26,20 @@ namespace HSM
                 return;
 
             Mode = ActivityMode.Activating;
-            _animator.Play(_stateName);
+            if(_onEnter)
+                _animator.Play(_stateName);
             Mode = ActivityMode.Active;
         }
 
         public async override Task DeactivateAsync(CancellationToken ct)
         {
+            if (Mode != ActivityMode.Active || _animator == null)
+                return;
+            
+            Mode = ActivityMode.Deactivating;
+            if(!_onEnter)
+                _animator.Play(_stateName);
+            
             Mode = ActivityMode.Inactive;
         }
     }

@@ -16,8 +16,8 @@ MonoBehaviour:
   <RideHeight>k__BackingField: 1
   <SpringForce>k__BackingField: 2000
   <SpringDamper>k__BackingField: 150
-  <GroundDistanceCheckDistance>k__BackingField: 1.5
-  <GroundCheckRadius>k__BackingField: 0.2
+  <GroundDistanceCheckDistance>k__BackingField: 2
+  <GroundCheckRadius>k__BackingField: 0.1
   <ColliderHeight>k__BackingField: 2
   <StepHeightRatio>k__BackingField: 0.2
   <Thickness>k__BackingField: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   <AirborneSettings>k__BackingField:
-    <MaxSpeed>k__BackingField: 10
+    <MaxSpeed>k__BackingField: 6
     <Acceleration>k__BackingField: 20
     <AccelerationFactorFromDot>k__BackingField:
       serializedVersion: 2

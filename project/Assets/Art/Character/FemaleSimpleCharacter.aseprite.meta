@@ -2,7 +2,57 @@ fileFormatVersion: 2
 guid: d566fb1da61a3b44e90cbdd0e6138b95
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Idle
+    second: {fileID: 7400000, guid: 80d929335196c1746b7a4033e1549add, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Jump Land
+    second: {fileID: 7400000, guid: 05ed8532de46250428e586ffc4b93c96, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Jump Land Prediction
+    second: {fileID: 7400000, guid: 052dc5fae25267c478abdc4d24177f07, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Jump Midair
+    second: {fileID: 7400000, guid: 620bf94b20b1fb34e9d9a2339f2b7c3f, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Jump Midair Loop
+    second: {fileID: 7400000, guid: a42a9a8835d6ec149b9bad8ad04f893c, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Jump Squat
+    second: {fileID: 7400000, guid: f0dcfed309508d847ada1031059936e5, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Run
+    second: {fileID: 7400000, guid: 00fda222d2a58624ea2819fcb33f6bd6, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Shift-Back
+    second: {fileID: 7400000, guid: 8def17af29decca40ac8a5433bee0cbe, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Shift-Back-Idle
+    second: {fileID: 7400000, guid: 42fe8a95a80315543ba99601cbd1e772, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Walk
+    second: {fileID: 7400000, guid: b339644552d1f054e85a97a945cf313a, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -24,7 +74,7 @@ ScriptedImporter:
     normalMapFilter: 0
     flipGreenChannel: 0
     swizzle: 50462976
-    isReadable: 0
+    isReadable: 1
     streamingMipmaps: 0
     streamingMipmapsPriority: 0
     vTOnly: 0
@@ -98,7 +148,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638999669125595503
+  platformSettingsDirtyTick: 639000283623724614
   textureAssetName: 
   singleSpriteImportData:
   - name: 

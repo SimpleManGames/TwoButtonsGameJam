@@ -11,12 +11,14 @@ namespace Character
         public readonly bool isGrounded;
         public readonly float groundedAngle;
         public readonly Transform groundTransform;
+        public readonly Vector2 groundWorldPoint;
 
-        public GatheredGroundInfo(bool isGrounded, float groundedAngle, Transform groundTransform)
+        public GatheredGroundInfo(bool isGrounded, float groundedAngle, Transform groundTransform, Vector2 groundWorldPoint)
         {
             this.isGrounded = isGrounded;
             this.groundedAngle = groundedAngle;
             this.groundTransform = groundTransform;
+            this.groundWorldPoint = groundWorldPoint;
         }
     }
 
@@ -47,6 +49,7 @@ namespace Character
             _context.IsGrounded = info.isGrounded;
             _context.GroundedAngle = info.groundedAngle;
             _context.GroundTransform = info.groundTransform;
+            _context.GroundWorldPoint = info.groundWorldPoint;
         }
 
         private GatheredGroundInfo RaycastForCheckGroundedInfo()
@@ -55,7 +58,7 @@ namespace Character
             RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, _settings.GroundCheckRadius, Vector2.down, _settings.GroundDistanceCheckDistance);
             Debug.DrawRay(raycastPosition, Vector2.down * _settings.GroundDistanceCheckDistance, Color.blue);
             
-            return new GatheredGroundInfo(hit.transform != null, Vector2.Angle(hit.normal, Vector2.up), hit.transform);
+            return new GatheredGroundInfo(hit.transform != null, Vector2.Angle(hit.normal, Vector2.up), hit.transform, hit.point);
         }
     }
 }
