@@ -18,6 +18,9 @@ MonoBehaviour:
   <SpringDamper>k__BackingField: 150
   <GroundDistanceCheckDistance>k__BackingField: 2
   <GroundCheckRadius>k__BackingField: 0.1
+  <GroundLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 640
   <ColliderHeight>k__BackingField: 2
   <StepHeightRatio>k__BackingField: 0.2
   <Thickness>k__BackingField: 1

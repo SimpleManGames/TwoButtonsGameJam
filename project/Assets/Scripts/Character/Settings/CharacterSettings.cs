@@ -45,6 +45,9 @@ namespace Character.Settings
 
         [field: SerializeField]
         public float GroundCheckRadius { get; private set; } = 0.1f;
+        
+        [field: SerializeReference]
+        public LayerMask GroundLayerMask { get; private set; }
 
         [field: Header("Collider Settings")]
         [field: SerializeField]

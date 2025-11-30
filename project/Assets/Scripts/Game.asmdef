@@ -5,7 +5,8 @@
         "VContainer",
         "Character",
         "HSM",
-        "Input"
+        "Input",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

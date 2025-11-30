@@ -10,16 +10,20 @@ namespace Character
         private readonly Rigidbody2D _rigidbody2D;
         private readonly CharacterSettings _settings;
 
+        private readonly LayerMask _ignoreLayerMask;
+        
         public FloatRigidbody(Transform transform, Rigidbody2D rigidbody2D, CharacterSettings settings)
         {
             _transform = transform;
             _rigidbody2D = rigidbody2D;
             _settings = settings;
+            
+            _ignoreLayerMask = LayerMask.GetMask("FloatRigidbodyIgnore");
         }
         
         public void ApplyForceToFloat()
         {
-            RaycastHit2D hitInfo = Physics2D.Raycast(_transform.position, Vector2.down, _settings.FloatColliderRaycastLength);
+            RaycastHit2D hitInfo = Physics2D.Raycast(_transform.position, Vector2.down, _settings.FloatColliderRaycastLength, ~_ignoreLayerMask);
             
             if (hitInfo.collider == null)
                 return;
@@ -41,9 +45,11 @@ namespace Character
 
             float springForce = (x * _settings.SpringForce) - (relativeVelocity * _settings.SpringDamper);
             _rigidbody2D.AddForce(direction * springForce, ForceMode2D.Force);
-            
-            if(otherRigidbody2D != null)
+
+            if (otherRigidbody2D != null && !otherRigidbody2D.TryGetComponent(out IgnoreFloatRigidbodyPushback _))
+            {
                 otherRigidbody2D.AddForceAtPosition(otherVelocity * -springForce, hitInfo.point, ForceMode2D.Force);
+            }
         }
     }
 }

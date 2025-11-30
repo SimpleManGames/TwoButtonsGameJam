@@ -10,14 +10,19 @@ namespace Game
     public sealed class PlayerCharacterInput : IStartable, TwoButtonsInputAction.IGameplayActions
     {
         private readonly TwoButtonsInputAction _inputAction;
+        
         private readonly CharacterContext _context;
+        private readonly Transform _characterTransform;
+        private readonly Interactable[] _interactableArray;
 
         private float _moveDirection;
-
-        public PlayerCharacterInput(TwoButtonsInputAction inputAction, CharacterContext context)
+        
+        public PlayerCharacterInput(TwoButtonsInputAction inputAction, CharacterContext context, Transform characterTransform, Interactable[] interactableArray)
         {
             _inputAction = inputAction;
             _context = context;
+            _characterTransform = characterTransform;
+            _interactableArray = interactableArray;
             _inputAction.Gameplay.SetCallbacks(this);
         }
 
@@ -44,6 +49,18 @@ namespace Game
             if (context.performed)
             {
                 _context.JumpInputElapsed = 0f;
+            }
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+                return;
+
+            foreach (Interactable interactable in _interactableArray)
+            {
+                if (interactable.TryToInteract(_characterTransform))
+                    break;
             }
         }
     }

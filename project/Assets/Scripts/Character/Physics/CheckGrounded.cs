@@ -29,7 +29,7 @@ namespace Character
         private readonly CharacterContext _context;
         private readonly CharacterSettings _settings;
         private readonly Rigidbody2D _rigidbody;
-
+        
         public CheckGrounded(Transform transform, CapsuleCollider2D collider, CharacterContext context, CharacterSettings settings, Rigidbody2D rigidbody)
         {
             _transform = transform;
@@ -55,7 +55,7 @@ namespace Character
         private GatheredGroundInfo RaycastForCheckGroundedInfo()
         {
             Vector2 raycastPosition = new Vector2 (_transform.position.x, _transform.position.y) + _collider.offset;
-            RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, _settings.GroundCheckRadius, Vector2.down, _settings.GroundDistanceCheckDistance);
+            RaycastHit2D hit = Physics2D.CircleCast(raycastPosition, _settings.GroundCheckRadius, Vector2.down, _settings.GroundDistanceCheckDistance,  _settings.GroundLayerMask);
             Debug.DrawRay(raycastPosition, Vector2.down * _settings.GroundDistanceCheckDistance, Color.blue);
             
             return new GatheredGroundInfo(hit.transform != null, Vector2.Angle(hit.normal, Vector2.up), hit.transform, hit.point);
